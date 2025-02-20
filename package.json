@@ -1,0 +1,24 @@
+{
+  "name": "project-practice",
+  "version": "1.0.0",
+  "description": "\"Hello World!\"",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test electron",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victranfield/testing-desktop-app-frameworks.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "victranfield",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victranfield/testing-desktop-app-frameworks/issues"
+  },
+  "homepage": "https://github.com/victranfield/testing-desktop-app-frameworks#readme"
+}
