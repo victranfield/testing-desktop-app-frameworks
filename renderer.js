@@ -15,3 +15,8 @@ new window.Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
     await window.darkMode.system()
     document.getElementById('theme-source').innerHTML = 'System'
   })
+
+ //function on window/document
+ //call from preload
+ //main can't see renderer
+ //preload before renderer
