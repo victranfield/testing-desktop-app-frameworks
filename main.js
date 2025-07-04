@@ -77,12 +77,17 @@ let rmsData
       console.log(error);
     }
 
-
+    
     
     if (BrowserWindow.getAllWindows().length === 0) 
     {
-      const win = createWindow()
-      win.webContents.send("main-channel", rmsData)
+      const win = createWindow() //point back to live site
+      //dial - fires function inside codebase
+      //cal on renderer
+      win.webContents.on('did-finish-load', () => {     //ensuring renderer and preload have run
+        console.log(rmsData)
+      win.webContents.send("main-channel", rmsData)})
+      //listener not existing
       showNotification()
     }
 })

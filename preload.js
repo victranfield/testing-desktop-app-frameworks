@@ -18,15 +18,17 @@ window.addEventListener('DOMContentLoaded', () => {
       if (element) element.innerText = text
     }
   document.foo = "bar"
-    for (const dependency of ['chrome', 'node', 'electron']) {
-      replaceText(`${dependency}-version`, process.versions[dependency])
-    }
-  })
-
-  ipcRenderer.on("main-channel", (event, arg) => {
+  //setup
+    ipcRenderer.on("main-channel", (event, arg) => {
+      console.log("hello from main channel")
     const appRoot = document.getElementById("app-root")
     arg.data.forEach((rmsModule) => {
       const textNode = document.createTextNode(rmsModule.id)
       appRoot.appendChild(textNode)
     })
   })
+    for (const dependency of ['chrome', 'node', 'electron']) {
+      replaceText(`${dependency}-version`, process.versions[dependency])
+    }
+  })
+
