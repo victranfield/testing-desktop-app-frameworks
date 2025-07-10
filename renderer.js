@@ -15,3 +15,46 @@ new window.Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
     await window.darkMode.system()
     document.getElementById('theme-source').innerHTML = 'System'
   })
+
+ //function on window/document
+ //call from preload
+ //main can't see renderer
+ //preload before renderer
+
+ //renderer js required by the page
+ //renderer there in a script tag
+ //document create Element
+
+ // Function to create and show notifications (uses window/document)
+function showNotification() {
+  if (window.Notification) {
+    const notification = new window.Notification(NOTIFICATION_TITLE, { 
+      body: NOTIFICATION_BODY 
+    })
+    
+    notification.onclick = () => {
+      const outputElement = document.getElementById('output')
+      if (outputElement) {
+        outputElement.innerText = CLICK_MESSAGE
+      }
+      console.log(CLICK_MESSAGE)
+    }
+  }
+}
+
+// Function to handle RMS module data rendering
+function renderRMSModules(modules) {
+  const appRoot = document.getElementById('app-root')
+  console.log(appRoot)
+  if (appRoot && Array.isArray(modules)) {
+    // Clear existing content
+    appRoot.innerHTML = ''
+    
+    modules.forEach((rmsModule) => {
+      const moduleElement = document.createElement('div')
+      moduleElement.className = 'rms-module'
+      moduleElement.textContent = rmsModule.id || rmsModule.name || 'Unknown Module'
+      appRoot.appendChild(moduleElement)
+    })
+  }
+}
