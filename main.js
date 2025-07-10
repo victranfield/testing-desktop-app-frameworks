@@ -85,7 +85,7 @@ let rmsData
       //dial - fires function inside codebase
       //cal on renderer
       win.webContents.on('did-finish-load', () => {     //ensuring renderer and preload have run
-        console.log(rmsData)
+        
       win.webContents.send("main-channel", rmsData)})
       //listener not existing
       showNotification()

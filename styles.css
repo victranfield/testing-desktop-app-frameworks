@@ -228,12 +228,39 @@ button:active {
 }
 
 /* Grid layout - Flexible for individual modules */
-.rms-modules-grid {
+/* .rms-module-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 15px;
   margin-top: 15px;
+} */
+
+.rms-module-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  padding: 16px;
+  margin: 12px 0;
+  background-color: var(--module-bg-secondary);
+  color: var(--module-text);
+  border: 1px solid var(--module-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--module-shadow);
 }
+
+.rms-module-grid:hover {
+  box-shadow: 0 4px 8px var(--module-shadow-hover);
+}
+
+.grid-label {
+  font-weight: bold;
+  color: var(--module-accent);
+}
+
+.grid-value {
+  word-break: break-word;
+}
+
 
 /* Individual module animations */
 @keyframes moduleSlideIn {

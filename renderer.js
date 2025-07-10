@@ -1,3 +1,8 @@
+import react from "react";
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import { RouterProvider } from '@tanstack/react-router';
+
 const NOTIFICATION_TITLE = 'Title'
 const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
 const CLICK_MESSAGE = 'Notification clicked!'
@@ -15,6 +20,17 @@ new window.Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
     await window.darkMode.system()
     document.getElementById('theme-source').innerHTML = 'System'
   })
+
+window.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('root');
+  if (container) {
+    const root = createRoot(container);
+    root.render(<App />);
+  } else {
+    console.error('React root container not found');
+  }
+});
+
 
  //function on window/document
  //call from preload
@@ -43,18 +59,23 @@ function showNotification() {
 }
 
 // Function to handle RMS module data rendering
-function renderRMSModules(modules) {
+  function renderRMSModules(modules) {
   const appRoot = document.getElementById('app-root')
   console.log(appRoot)
   if (appRoot && Array.isArray(modules)) {
     // Clear existing content
     appRoot.innerHTML = ''
     
+
     modules.forEach((rmsModule) => {
       const moduleElement = document.createElement('div')
-      moduleElement.className = 'rms-module'
+      moduleElement.className = 'rms-module-grid'
       moduleElement.textContent = rmsModule.id || rmsModule.name || 'Unknown Module'
       appRoot.appendChild(moduleElement)
     })
   }
-}
+
+};
+
+// module.exports = {renderRMSModules}
+  // import './app.jsx';
